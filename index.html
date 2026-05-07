@@ -3,18 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>end me</title>
+        <title>Simple OBJ Viewer</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div class="container flex">
+        <div class="container">
             <div id="canvas-wraper">
-                <canvas id="canvas" class="flex"></canvas>
+                <canvas id="canvas"></canvas>
                 <div id="canvas-overlay">
+                    <div id="drop-message">
+                        <span>Drop an .obj file here</span>
+                        <span class="small">or click to browse</span>
+                    </div>
+                    <div id="canvas-options">
+                        <button id="btn-open" title="Load model">↥</button>
+                        <button id="btn-screenshot" title="Save screenshot">◉</button>
 
+                        <span class="btn-with-popup">
+                            <button id="btn-rotate" title="Auto-rotate">↻</button>
+                            <div id="rotate-popup" class="popup">
+                                <div class="popup-row">
+                                    <label>Speed:</label>
+                                    <input type="range" id="rotate-speed" min="0.5" max="5" step="0.1" value="2">
+                                </div>
+                                <div class="popup-row">
+                                    <button id="rotate-right">↶</button>
+                                    <button id="rotate-left">↷</button>
+                                </div>
+                            </div>
+                        </span>
+
+                        <button id="btn-zoom" title="Reset view">🗘</button>
+                        <button id="btn-wire" title="Wireframe">⋕</button>
+                        <button id="btn-clear" title="Clear model">✕</button>
+
+                        <span class="btn-with-popup">
+                            <button id="btn-bg" title="Background">☰</button>
+                            <div id="bg-popup" class="popup">
+                                <div class="color-presets">
+                                    <div class="color-preset" style="background:#00ff00" data-color="#00ff00"></div>
+                                    <div class="color-preset" style="background:#ffffff" data-color="#ffffff"></div>
+                                    <div class="color-preset" style="background:#000000" data-color="#000000"></div>
+                                    <div class="color-preset" style="background:#ff00ff" data-color="#ff00ff"></div>
+                                    <div class="color-preset" style="background:#ffff00" data-color="#ffff00"></div>
+                                </div>
+                                <input type="color" id="bg-custom" value="#00ff00">
+                            </div>
+                        </span>
+                    </div>
+                    <div id="resize-handle"></div>
                 </div>
             </div>
         </div>
-        <script src="script.js"></script>
+        <input type="file" id="file-input" accept=".obj" hidden>
+
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
+                }
+            }
+        </script>
+        <script type="module" src="script.js"></script>
     </body>
 </html>
