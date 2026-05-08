@@ -93,6 +93,12 @@ body {
     pointer-events: auto;
     user-select: none;
 }
+#drop-message:hover {
+    cursor: pointer;
+}
+#drop-message:active {
+    background: rgba(0, 0, 0, 0.3);
+}
 #drop-message .small {
     display: block;
     font-size: 0.9rem;
