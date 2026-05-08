@@ -123,14 +123,17 @@ document.getElementById('btn-screenshot').addEventListener('click', async () => 
         downloadDataURL(dataURL, 'model-screenshot.png');
     } else {
         // Hide UI
+        const header = document.getElementById('header');
         const optionsBar = document.getElementById('canvas-options');
         const dropMsg = document.getElementById('drop-message');
         const handle = document.getElementById('resize-handle');
         const origDisplay = {
+            header: header.style.display,
             options: optionsBar.style.display,
             drop: dropMsg.style.display,
             handle: handle.style.display
         };
+        header.style.display = 'none';
         optionsBar.style.display = 'none';
         dropMsg.style.display = 'none';
         handle.style.display = 'none';
@@ -161,6 +164,7 @@ document.getElementById('btn-screenshot').addEventListener('click', async () => 
         } catch (err) {
             alert('Screenshot failed. Try enabling a solid background.');
         } finally {
+            header.style.display = origDisplay.header;
             optionsBar.style.display = origDisplay.options;
             dropMsg.style.display = origDisplay.drop;
             handle.style.display = origDisplay.handle;
