@@ -302,12 +302,12 @@ window.addEventListener('mousemove', (e) => {
     if (!resizing) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
-    const newWidth = Math.max(300, startWidth + dx * 2);
-    const newHeight = Math.max(300, startHeight + dy * 2);
+    const newWidth = Math.min(Math.max(300, startWidth + dx * 2), 900);
+    const newHeight = Math.min(Math.max(300, startHeight + dy * 2), document.documentElement.clientHeight); // fix the second value so that model cant be "squiched"
     wrapper.style.width = newWidth + 'px';
     wrapper.style.height = newHeight + 'px';
     wrapper.style.aspectRatio = 'auto';  // break the 1/1 lock
-
+    
     canvas.width = newWidth;
     canvas.height = newHeight;
     camera.aspect = newWidth / newHeight;
