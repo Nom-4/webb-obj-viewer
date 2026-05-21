@@ -303,13 +303,13 @@ window.addEventListener('mousemove', (e) => {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     const newWidth = Math.min(Math.max(300, startWidth + dx * 2), 900);
-    const newHeight = Math.min(Math.max(300, startHeight + dy * 2), document.documentElement.clientHeight); // fix the second value so that model cant be "squiched"
+    const newHeight = Math.min(Math.max(300, startHeight + dy * 2), document.documentElement.clientHeight * 0.85);
     wrapper.style.width = newWidth + 'px';
     wrapper.style.height = newHeight + 'px';
     wrapper.style.aspectRatio = 'auto';  // break the 1/1 lock
     
-    canvas.width = newWidth;
-    canvas.height = newHeight;
+    // canvas.width = newWidth;
+    // canvas.height = newHeight;
     camera.aspect = newWidth / newHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(newWidth, newHeight);
