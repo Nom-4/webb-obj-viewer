@@ -1,5 +1,4 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -69,7 +68,7 @@ body {
     display: block;
     border-radius: 6px;
     cursor: grab;
-    box-sizing: border-box; /* Why do i need this here when i have it in "*"?! */
+    box-sizing: border-box;
 }
 #canvas:active {
     cursor: grabbing;

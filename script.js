@@ -308,8 +308,6 @@ window.addEventListener('mousemove', (e) => {
     wrapper.style.height = newHeight + 'px';
     wrapper.style.aspectRatio = 'auto';  // break the 1/1 lock
     
-    // canvas.width = newWidth;
-    // canvas.height = newHeight;
     camera.aspect = newWidth / newHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(newWidth, newHeight);
